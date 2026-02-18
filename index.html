@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bharathi S | 3D Mechanical Portfolio</title>
+<title>Bharathi S | Mechanical Portfolio</title>
 <style>
   body { margin: 0; overflow: hidden; background: #0b0c10; }
   canvas { display: block; }
@@ -62,8 +62,8 @@
 <body>
 <div id="info">
   <h1>Bharathi S</h1>
-  <p>Mechanical Designer | CAD | Projects | Internship</p>
-  <p>Email: bharathi@gmail.com</p>
+  <p>Mechanical Engineer | CAD | AutoCAD | PTC Creo | Fusion 360</p>
+  <p>Department: BE Mechanical Engineering (SVCE)</p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
@@ -103,13 +103,11 @@
       tooth.rotation.y = -i*2*Math.PI/teeth;
       gearGroup.add(tooth);
     }
-    // Center cylinder
     const cylGeo = new THREE.CylinderGeometry(radius*0.5, radius*0.5, thickness, 32);
     const cylMat = new THREE.MeshStandardMaterial({color: color});
     const cyl = new THREE.Mesh(cylGeo, cylMat);
     cyl.rotation.x = Math.PI/2;
     gearGroup.add(cyl);
-
     return gearGroup;
   }
 
@@ -122,7 +120,7 @@
     gears.push(gear);
   }
 
-  // Create floating hologram panels
+  // Floating hologram panels
   function createPanel(size=3, color=0x45a29e){
     const geo = new THREE.PlaneGeometry(size, size);
     const mat = new THREE.MeshStandardMaterial({color: color, transparent: true, opacity: 0.7, side: THREE.DoubleSide});
@@ -138,7 +136,7 @@
     panels.push(panel);
   }
 
-  // Stars (tiny spheres)
+  // Stars
   const starGeo = new THREE.SphereGeometry(0.02, 8, 8);
   const starMat = new THREE.MeshBasicMaterial({color: 0xffffff});
   for(let i=0;i<200;i++){
@@ -150,16 +148,11 @@
   // Animate
   function animate(){
     requestAnimationFrame(animate);
-
-    // Rotate gears
     gears.forEach((g,i)=> g.rotation.y += 0.01*(i+1));
-
-    // Floating panels animation
     panels.forEach((p, idx) => {
       p.position.y += Math.sin(Date.now() * 0.001 + idx) * 0.002;
       p.rotation.y += 0.001;
     });
-
     controls.update();
     renderer.render(scene, camera);
   }
