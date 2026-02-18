@@ -7,6 +7,7 @@
 <style>
   body { margin: 0; overflow: hidden; background: #0b0c10; }
   canvas { display: block; }
+
   #info {
     position: absolute;
     top: 20px;
@@ -15,9 +16,47 @@
     font-family: 'Poppins', sans-serif;
     text-shadow: 0 0 10px rgba(0,255,255,0.5);
     z-index: 10;
+    animation: float 4s ease-in-out infinite;
   }
-  #info h1 { margin: 0; font-size: 2.5rem; }
-  #info p { margin: 5px 0; font-size: 1rem; }
+
+  #info h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #66fcf1;
+    animation: typing 4s steps(40, end), blink 0.75s step-end infinite;
+  }
+
+  #info p {
+    margin: 5px 0;
+    font-size: 1rem;
+    opacity: 0;
+    animation: fadeGlow 3s ease forwards;
+    animation-delay: 2s; /* starts after name typing */
+  }
+
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+  @keyframes blink {
+    from, to { border-color: transparent }
+    50% { border-color: #66fcf1 }
+  }
+
+  @keyframes fadeGlow {
+    to {
+      opacity: 1;
+      text-shadow: 0 0 20px #66fcf1, 0 0 40px #45a29e;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
 </style>
 </head>
 <body>
@@ -26,7 +65,7 @@
   <p>Mechanical Designer | CAD | Projects | Internship</p>
   <p>Email: bharathi@gmail.com</p>
 </div>
-  
+
 <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
 <script>
