@@ -1,105 +1,81 @@
-
-
-window.addEventListener("load", () => {
-
-    const animations = [
-        { selector: ".top-tags", class: "from-top", delay: 0 },
-        { selector: ".left h1", class: "from-left", delay: 0.3 },
-        { selector: ".desc", class: "from-left", delay: 0.6 },
-        { selector: ".live-line", class: "from-bottom", delay: 0.9 },
-        { selector: ".buttons", class: "zoom-in", delay: 1.2 },
-        { selector: ".site-link", class: "from-bottom", delay: 1.5 },
-        { selector: ".right", class: "from-right", delay: 0.6 },
-        { selector: ".stats", class: "from-bottom", delay: 1.8 },
-    ];
-
-    animations.forEach(item => {
-        const el = document.querySelector(item.selector);
-        if (el) {
-            el.style.animationDelay = `${item.delay}s`;
-            el.classList.add(item.class);
-        }
-    });
-
-    // ===== HIDE INTRO =====
-    setTimeout(() => {
-        const intro = document.getElementById("intro");
-        const site = document.getElementById("real-site");
-
-        intro.classList.add("smooth-out");
-
-        setTimeout(() => {
-            intro.style.display = "none";
-            site.style.display = "block";
-            initScrollAnimations(); 
-        }, 1200);
-    }, 3800);
-});
-
-
-// ===============================
-// SCROLL REVEAL (SECTIONS)
-// ===============================
-function initScrollAnimations() {
-    const elements = document.querySelectorAll(
-        ".slide-in-left, .slide-in-right, .slide-in-up"
-    );
-
-    const observer = new IntersectionObserver(
-        entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = "1";
-                    entry.target.style.transform = "translate(0)";
-                    observer.unobserve(entry.target);
-                }
-            });
-        },
-        { threshold: 0.2 }
-    );
-
-    elements.forEach(el => observer.observe(el));
+/* Hide original content */
+.hidden-content{
+display:none;
 }
 
+/* Profile Image */
+.profile-placeholder{
+height:260px;
+border-radius:15px;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+}
 
-// ===============================
+.profile-img{
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:15px;
+}
 
-const sections = document.querySelectorAll("section");
-const navItems = document.querySelectorAll(".ul-list li");
+/* ===== MODAL ===== */
+.modal-overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(8px);
+display:flex;
+justify-content:center;
+align-items:center;
+opacity:0;
+visibility:hidden;
+transition:0.4s ease;
+z-index:9999;
+}
 
-window.addEventListener("scroll", () => {
-    let current = "";
+.modal-overlay.active{
+opacity:1;
+visibility:visible;
+}
 
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 200;
-        const sectionHeight = section.clientHeight;
+.modal-content{
+width:90%;
+max-width:700px;
+max-height:80vh;
+overflow-y:auto;
+position:relative;
+padding:40px;
+transform:scale(0.8);
+transition:0.4s ease;
+animation:fadeIn 0.4s ease;
+}
 
-        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-            current = section.getAttribute("id");
-        }
-    });
+.modal-overlay.active .modal-content{
+transform:scale(1);
+}
 
-    navItems.forEach(item => {
-        item.classList.remove("active");
+.close-btn{
+position:absolute;
+top:15px;
+right:20px;
+font-size:20px;
+cursor:pointer;
+}
 
-        const link = item.querySelector("a");
-        if (link && link.getAttribute("href") === `#${current}`) {
-            item.classList.add("active");
-        }
-    });
-});
+.close-btn:hover{
+color:cyan;
+}
 
-// ===============================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute("href"));
+body.modal-open{
+overflow:hidden;
+}
 
-        if (target) {
-            window.scrollTo({
-                top: target.offsetTop - 120,
-                behavior: "smooth"
-            });
-        }
-    });
-});
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
+}
