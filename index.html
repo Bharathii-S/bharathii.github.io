@@ -1,96 +1,125 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Bharathi Mechanical Engineering Portfolio">
-<title>Bharathi Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bharathi Mechanical Engineering Portfolio">
+    
+    <title>Bharathi Portfolio</title>
 
-<link rel="stylesheet" href="style.css">
+    <!-- CSS LINK (IMPORTANT) -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- Scroll Progress -->
+<!-- Scroll Progress Bar -->
 <div id="progressBar"></div>
 
-<!-- Intro -->
+<!-- Intro Screen -->
 <section id="intro">
-<h1>Welcome to Bharathi Portfolio</h1>
+    <h1>Welcome to Bharathi Portfolio</h1>
 </section>
 
 <!-- Theme Toggle -->
 <button id="themeToggle">🌙</button>
 
+<!-- MAIN CONTENT -->
 <main id="mainContent">
 
-<section class="about-section">
+    <!-- ABOUT SECTION -->
+    <section class="about-section">
 
-<div class="about-left glass">
-<h2>About Me</h2>
-<p id="typingText"></p>
-</div>
+        <!-- LEFT ABOUT BOX -->
+        <div class="about-left glass">
+            <h2>About Me</h2>
+            <p id="typingText"></p>
+        </div>
 
-<div class="about-right glass">
-<div class="profile-placeholder">
-<img src="your-image.jpg" alt="Profile" class="profile-img">
-</div>
-</div>
+        <!-- RIGHT IMAGE SPACE -->
+        <div class="about-right glass">
+            <div class="profile-placeholder">
+                Add Profile Image Here
+            </div>
+        </div>
 
-</section>
+    </section>
 
-<section class="info-sections">
+    <!-- INFO SECTIONS -->
+    <section class="info-sections">
 
-<div class="menu-card" onclick="openModal('skills')">Skills</div>
-<div id="skills" class="hidden-content">
-<h3>Skills</h3>
-<p>AutoCAD – 90%</p>
-<p>PTC Creo – 85%</p>
-<p>Fusion 360 – 80%</p>
-<p>MS Excel – 75%</p>
-<p>C Programming – 70%</p>
-</div>
+        <!-- SKILLS -->
+        <div class="menu-card" onclick="toggleSection('skills')">Skills</div>
+        <div id="skills" class="detail-panel">
 
-<div class="menu-card" onclick="openModal('experience')">Work Experience</div>
-<div id="experience" class="hidden-content">
-<h3>NLC Limited Internship</h3>
-<p>Gearbox reconditioning, dismantling, inspection, lubrication checking and assembly.</p>
-</div>
+            <div class="skill">
+                <span>AutoCAD</span>
+                <div class="bar"><div style="width:90%"></div></div>
+            </div>
 
-<div class="menu-card" onclick="openModal('certifications')">Certifications</div>
-<div id="certifications" class="hidden-content">
-<h3>Certifications</h3>
-<p>NPTEL – Machinery Fault Diagnosis</p>
-<p>NPTEL – Sustainable Energy Technology</p>
-<p>Excel – Intellipaat</p>
-<p>GD&T Certification</p>
-</div>
+            <div class="skill">
+                <span>PTC Creo</span>
+                <div class="bar"><div style="width:85%"></div></div>
+            </div>
 
-<div class="menu-card" onclick="openModal('languages')">Languages</div>
-<div id="languages" class="hidden-content">
-<h3>Languages</h3>
-<p>English</p>
-<p>Tamil</p>
-</div>
+            <div class="skill">
+                <span>Fusion 360</span>
+                <div class="bar"><div style="width:80%"></div></div>
+            </div>
 
-</section>
+            <div class="skill">
+                <span>MS Excel</span>
+                <div class="bar"><div style="width:75%"></div></div>
+            </div>
+
+            <div class="skill">
+                <span>C Programming</span>
+                <div class="bar"><div style="width:70%"></div></div>
+            </div>
+
+        </div>
+
+        <!-- EXPERIENCE -->
+        <div class="menu-card" onclick="toggleSection('experience')">Work Experience</div>
+        <div id="experience" class="detail-panel timeline">
+            <div class="timeline-item">
+                <h3>NLC Limited Internship</h3>
+                <p>
+                Gearbox reconditioning, dismantling, inspection,
+                lubrication checking and assembly.
+                </p>
+            </div>
+        </div>
+
+        <!-- CERTIFICATIONS -->
+        <div class="menu-card" onclick="toggleSection('certifications')">Certifications</div>
+        <div id="certifications" class="detail-panel cert-grid">
+            <div class="cert-card">NPTEL – Machinery Fault Diagnosis</div>
+            <div class="cert-card">NPTEL – Sustainable Energy Technology</div>
+            <div class="cert-card">Excel – Intellipaat</div>
+            <div class="cert-card">GD&T Certification</div>
+        </div>
+
+        <!-- LANGUAGES -->
+        <div class="menu-card" onclick="toggleSection('languages')">Languages</div>
+        <div id="languages" class="detail-panel badges">
+            <span class="badge">English</span>
+            <span class="badge">Tamil</span>
+        </div>
+
+    </section>
 
 </main>
 
-<!-- Contact -->
+<!-- FLOATING CONTACT -->
 <div class="contact-float glass">
-<a href="mailto:ssuriyas2006@gmail.com">📧 Email</a>
-<a href="https://www.linkedin.com/in/bharathiis" target="_blank">🔗 LinkedIn</a>
+    <a href="mailto:ssuriyas2006@gmail.com">📧 Email</a>
+    <a href="https://www.linkedin.com/in/bharathiis" target="_blank">🔗 LinkedIn</a>
 </div>
 
-<!-- Modal -->
-<div id="modalOverlay" class="modal-overlay">
-<div class="modal-content glass">
-<span class="close-btn" onclick="closeModal()">✖</span>
-<div id="modalBody"></div>
-</div>
-</div>
-
+<!-- JS LINK (IMPORTANT - KEEP AT BOTTOM) -->
 <script src="script.js"></script>
+
 </body>
 </html>
