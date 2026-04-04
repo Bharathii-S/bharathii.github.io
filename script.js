@@ -1,81 +1,68 @@
-/* Hide original content */
-.hidden-content{
-display:none;
+
+// Intro Click
+const intro=document.getElementById("intro");
+const main=document.getElementById("mainContent");
+
+intro.addEventListener("click",()=>{
+intro.style.display="none";
+main.style.display="block";
+});
+
+// Typing Animation
+const text="Mechanical Engineering student passionate about mechanical design, CAD modelling and engineering problem solving. Experienced in AutoCAD, PTC Creo and Fusion 360 with internship exposure at NLC Limited and Arduino-based safety project development.";
+let i=0;
+function typing(){
+if(i<text.length){
+document.getElementById("typingText").innerHTML+=text.charAt(i);
+i++;
+setTimeout(typing,25);
+}
+}
+setTimeout(typing,500);
+
+// Toggle Sections
+function toggleSection(id){
+const el=document.getElementById(id);
+if(el.style.maxHeight){
+el.style.maxHeight=null;
+}else{
+el.style.maxHeight=el.scrollHeight+"px";
+}
 }
 
-/* Profile Image */
-.profile-placeholder{
-height:260px;
-border-radius:15px;
-overflow:hidden;
-display:flex;
-justify-content:center;
-align-items:center;
-}
+// Scroll Progress
+window.onscroll=()=>{
+let winScroll=document.documentElement.scrollTop;
+let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+let scrolled=(winScroll/height)*100;
+document.getElementById("progressBar").style.width=scrolled+"%";
+};
 
-.profile-img{
-width:100%;
-height:100%;
-object-fit:cover;
-border-radius:15px;
-}
+// Dark Mode Toggle
+document.getElementById("themeToggle").onclick=()=>{
+document.body.classList.toggle("dark");
+};
 
-/* ===== MODAL ===== */
-.modal-overlay{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(8px);
-display:flex;
-justify-content:center;
-align-items:center;
-opacity:0;
-visibility:hidden;
-transition:0.4s ease;
-z-index:9999;
-}
+// Heart Click Animation
+document.addEventListener("click",(e)=>{
+let heart=document.createElement("div");
+heart.innerHTML="✨";
+heart.style.position="fixed";
+heart.style.left=e.clientX+"px";
+heart.style.top=e.clientY+"px";
+heart.style.color="pink";
+heart.style.fontSize="18px";
+heart.style.pointerEvents="none";
+heart.style.animation="floatUp 1s forwards";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),1000);
+});
 
-.modal-overlay.active{
-opacity:1;
-visibility:visible;
+document.head.insertAdjacentHTML("beforeend",`
+<style>
+@keyframes floatUp{
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-80px);opacity:0;}
 }
-
-.modal-content{
-width:90%;
-max-width:700px;
-max-height:80vh;
-overflow-y:auto;
-position:relative;
-padding:40px;
-transform:scale(0.8);
-transition:0.4s ease;
-animation:fadeIn 0.4s ease;
-}
-
-.modal-overlay.active .modal-content{
-transform:scale(1);
-}
-
-.close-btn{
-position:absolute;
-top:15px;
-right:20px;
-font-size:20px;
-cursor:pointer;
-}
-
-.close-btn:hover{
-color:cyan;
-}
-
-body.modal-open{
-overflow:hidden;
-}
-
-@keyframes fadeIn{
-from{opacity:0; transform:translateY(20px);}
-to{opacity:1; transform:translateY(0);}
-}
+</style>
+`);
