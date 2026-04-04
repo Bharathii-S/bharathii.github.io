@@ -46,7 +46,7 @@ document.body.classList.toggle("dark");
 // Heart Click Animation
 document.addEventListener("click",(e)=>{
 let heart=document.createElement("div");
-heart.innerHTML="✨";
+heart.innerHTML="❤";
 heart.style.position="fixed";
 heart.style.left=e.clientX+"px";
 heart.style.top=e.clientY+"px";
