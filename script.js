@@ -1,55 +1,104 @@
-/* Intro */
-const intro=document.getElementById("intro");
-const main=document.getElementById("mainContent");
+document.addEventListener("DOMContentLoaded", function () {
 
-intro.addEventListener("click",()=>{
-intro.style.display="none";
-main.style.display="block";
+const intro = document.getElementById("intro");
+const main = document.getElementById("mainContent");
+const modal = document.getElementById("modalOverlay");
+const modalBody = document.getElementById("modalBody");
+const themeBtn = document.getElementById("themeToggle");
+const progressBar = document.getElementById("progressBar");
+
+/* =========================
+   INTRO CLICK
+========================= */
+intro.addEventListener("click", () => {
+intro.style.display = "none";
+main.style.display = "block";
+startTyping();
 });
 
-/* Typing Animation */
-const text="Mechanical Engineering student passionate about mechanical design, CAD modelling and engineering problem solving. Experienced in AutoCAD, PTC Creo and Fusion 360 with internship exposure at NLC Limited.";
-let i=0;
+/* =========================
+   MODAL OPEN (ONLY MODAL SHOW)
+========================= */
+window.openModal = function(id){
+const content = document.getElementById(id);
+if(!content) return;
 
-function typing(){
-if(i<text.length){
-document.getElementById("typingText").innerHTML+=text.charAt(i);
-i++;
-setTimeout(typing,25);
-}
-}
-setTimeout(typing,500);
-
-/* Scroll Progress */
-window.onscroll=()=>{
-let winScroll=document.documentElement.scrollTop;
-let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-let scrolled=(winScroll/height)*100;
-document.getElementById("progressBar").style.width=scrolled+"%";
-};
-
-/* Dark Mode */
-document.getElementById("themeToggle").onclick=()=>{
-document.body.classList.toggle("dark");
-};
-
-/* Modal */
-function openModal(id){
-const modal=document.getElementById("modalOverlay");
-const modalBody=document.getElementById("modalBody");
-modalBody.innerHTML=document.getElementById(id).innerHTML;
+modalBody.innerHTML = content.innerHTML;
 modal.classList.add("active");
-document.body.classList.add("modal-open");
-}
 
-function closeModal(){
-document.getElementById("modalOverlay").classList.remove("active");
-document.body.classList.remove("modal-open");
-}
+/* 🔥 Hide background */
+main.style.display = "none";
 
-/* Close on outside click */
-document.getElementById("modalOverlay").addEventListener("click",function(e){
-if(e.target===this){
+/* 🔥 Disable scroll */
+document.body.style.overflow = "hidden";
+};
+
+/* =========================
+   MODAL CLOSE
+========================= */
+window.closeModal = function(){
+modal.classList.remove("active");
+
+/* 🔥 Show background again */
+main.style.display = "block";
+
+/* 🔥 Enable scroll */
+document.body.style.overflow = "auto";
+};
+
+/* =========================
+   CLOSE ON OUTSIDE CLICK
+========================= */
+modal.addEventListener("click", (e)=>{
+if(e.target === modal){
 closeModal();
 }
+});
+
+/* =========================
+   THEME TOGGLE
+========================= */
+themeBtn.addEventListener("click", ()=>{
+document.body.classList.toggle("light");
+
+if(document.body.classList.contains("light")){
+themeBtn.textContent = "☀️";
+}else{
+themeBtn.textContent = "🌙";
+}
+});
+
+/* =========================
+   SCROLL PROGRESS BAR
+========================= */
+window.addEventListener("scroll", ()=>{
+const scrollTop = document.documentElement.scrollTop;
+const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+const progress = (scrollTop / height) * 100;
+progressBar.style.width = progress + "%";
+});
+
+/* =========================
+   TYPING EFFECT
+========================= */
+function startTyping(){
+
+const textElement = document.getElementById("typingText");
+
+const fullText = textElement.textContent.trim();
+textElement.textContent = "";
+
+let index = 0;
+
+function type(){
+if(index < fullText.length){
+textElement.textContent += fullText.charAt(index);
+index++;
+setTimeout(type, 15);
+}
+}
+
+type();
+}
+
 });
