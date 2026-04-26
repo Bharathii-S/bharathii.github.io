@@ -1,4 +1,4 @@
-# 💼 Bharathi Portfolio
+#  Bharathi S Portfolio
 
 A modern and interactive personal portfolio built using HTML, CSS, and JavaScript.  
 Designed to showcase skills, experience, projects, and certifications in a clean UI.
@@ -76,10 +76,9 @@ Designed to showcase skills, experience, projects, and certifications in a clean
 
 ---
 
-## 🌐 Live Demo (Optional)
+## 🌐 Live Demo
 
-_Add your GitHub Pages link here_
-
+(https://bharathii-s.github.io/bharathii.github.io/)
 ---
 
 ## ⭐ Acknowledgment
