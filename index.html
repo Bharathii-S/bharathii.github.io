@@ -3,7 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Bharathi Mechanical Engineering Portfolio">
+    <meta name="description" content="Bharathi Mec<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Bharathi Mechanical Engineering Portfolio">
+<title>Bharathi Portfolio</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- Scroll Progress -->
+<div id="progressBar"></div>
+
+<!-- Intro -->
+<section id="intro">
+<h1>Welcome to Bharathi Portfolio</h1>
+</section>
+
+<!-- Theme Toggle -->
+<button id="themeToggle">🌙</button>
+
+<main id="mainContent">
+
+<!-- ABOUT SECTION -->
+<section class="about-section">
+
+<div class="about-left glass">
+<h2>About Me</h2>
+<p id="typingText"></p>
+</div>
+
+</section>
+
+<!-- INFO SECTIONS -->
+<section class="info-sections">
+
+<div class="menu-card" onclick="openModal('skills')">Skills</div>
+<div id="skills" class="hidden-content">
+<h3>Skills</h3>
+<p>AutoCAD – 90%</p>
+<p>PTC Creo – 85%</p>
+<p>Fusion 360 – 80%</p>
+<p>MS Excel – 75%</p>
+<p>C Programming – 70%</p>
+</div>
+
+<div class="menu-card" onclick="openModal('experience')">Work Experience</div>
+<div id="experience" class="hidden-content">
+<h3>NLC Limited Internship</h3>
+<p>Gearbox reconditioning, dismantling, inspection, lubrication checking and assembly.</p>
+</div>
+
+<div class="menu-card" onclick="openModal('certifications')">Certifications</div>
+<div id="certifications" class="hidden-content">
+<h3>Certifications</h3>
+<p>NPTEL – Machinery Fault Diagnosis</p>
+<p>NPTEL – Sustainable Energy Technology</p>
+<p>Excel – Intellipaat</p>
+<p>GD&T Certification</p>
+</div>
+
+<div class="menu-card" onclick="openModal('languages')">Languages</div>
+<div id="languages" class="hidden-content">
+<h3>Languages</h3>
+<p>English</p>
+<p>Tamil</p>
+</div>
+
+</section>
+
+</main>
+
+<!-- Contact -->
+<div class="contact-float glass">
+<a href="mailto:ssuriyas2006@gmail.com">📧 Email</a>
+<a href="https://www.linkedin.com/in/bharathiis" target="_blank">🔗 LinkedIn</a>
+</div>
+
+<!-- MODAL -->
+<div id="modalOverlay" class="modal-overlay">
+<div class="modal-content glass">
+<span class="close-btn" onclick="closeModal()">✖</span>
+<div id="modalBody"></div>
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>hanical Engineering Portfolio">
     
     <title>Bharathi Portfolio</title>
 
